@@ -91,3 +91,19 @@ dt_pred = dt.predict(X_test)
 print("===== Decision Tree =====")
 print("Accuracy:", accuracy_score(y_test, dt_pred))
 print(classification_report(y_test, dt_pred))
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, RocCurveDisplay
+import matplotlib.pyplot as plt
+
+# Confusion Matrix
+ConfusionMatrixDisplay.from_estimator(lr, X_test, y_test)
+plt.title("Confusion Matrix")
+plt.savefig("images/confusion_matrix.png")
+plt.close()
+
+# ROC Curve
+RocCurveDisplay.from_estimator(lr, X_test, y_test)
+plt.title("ROC Curve")
+plt.savefig("images/roc_curve.png")
+plt.close()
+
+print("Confusion Matrix and ROC Curve saved.")
